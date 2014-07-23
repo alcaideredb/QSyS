@@ -1,0 +1,192 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: admin; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+CREATE TABLE admin (
+    username text,
+    password text
+);
+
+
+ALTER TABLE public.admin OWNER TO qadmin;
+
+--
+-- Name: next_slot; Type: SEQUENCE; Schema: public; Owner: qadmin
+--
+
+CREATE SEQUENCE next_slot
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.next_slot OWNER TO qadmin;
+
+--
+-- Name: slots; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+CREATE TABLE slots (
+    slot_id integer DEFAULT nextval('next_slot'::regclass),
+    student_id integer NOT NULL
+);
+
+
+ALTER TABLE public.slots OWNER TO qadmin;
+
+--
+-- Name: student_id_seq; Type: SEQUENCE; Schema: public; Owner: qadmin
+--
+
+CREATE SEQUENCE student_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.student_id_seq OWNER TO qadmin;
+
+--
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: qadmin
+--
+
+CREATE SEQUENCE user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id_seq OWNER TO qadmin;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer DEFAULT nextval('student_id_seq'::regclass) NOT NULL,
+    student_num integer NOT NULL,
+    q_num integer,
+    name text,
+    logged_in boolean DEFAULT false,
+    birthday date,
+    pin_num text NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO qadmin;
+
+--
+-- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: qadmin
+--
+
+COPY admin (username, password) FROM stdin;
+\.
+
+
+--
+-- Name: next_slot; Type: SEQUENCE SET; Schema: public; Owner: qadmin
+--
+
+SELECT pg_catalog.setval('next_slot', 24, true);
+
+
+--
+-- Data for Name: slots; Type: TABLE DATA; Schema: public; Owner: qadmin
+--
+
+COPY slots (slot_id, student_id) FROM stdin;
+19	201110273
+\.
+
+
+--
+-- Name: student_id_seq; Type: SEQUENCE SET; Schema: public; Owner: qadmin
+--
+
+SELECT pg_catalog.setval('student_id_seq', 111, true);
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: qadmin
+--
+
+SELECT pg_catalog.setval('user_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: qadmin
+--
+
+COPY users (id, student_num, q_num, name, logged_in, birthday, pin_num) FROM stdin;
+104	201220333	\N	JOHN DOE	f	1992-10-05	73882ab1fa529d7273da0db6b49cc4f3
+105	201231231	\N	Arabs Alcaide	f	1992-10-05	367119bd0ec8ec038bc0077df8a42d93
+103	201110273	\N	RB ALCAIDE	t	1994-02-10	230cab36e9b7d8047e9771cd5a1b0e6a
+\.
+
+
+--
+-- Name: oneid; Type: CONSTRAINT; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT oneid UNIQUE (student_num);
+
+
+--
+-- Name: slots_pkey; Type: CONSTRAINT; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY slots
+    ADD CONSTRAINT slots_pkey PRIMARY KEY (student_id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

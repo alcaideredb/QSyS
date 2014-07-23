@@ -1,0 +1,1 @@
+SELECT slots.slot_id, users.nickname, slots.day_id FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=1 ORDER by slots.slot_id;
