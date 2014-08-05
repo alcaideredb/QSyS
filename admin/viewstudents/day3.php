@@ -7,9 +7,9 @@
 	}
 
 
-	$dayquery[1]="SELECT slots.slot_id, users.nickname, slots.day_id FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=1 ORDER by slots.slot_id;";
-	$dayquery[2]="SELECT slots.slot_id, users.nickname, slots.day_id FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=2 ORDER by slots.slot_id;";	
-	$dayquery[3]="SELECT slots.slot_id, users.nickname, slots.day_id FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=3 ORDER by slots.slot_id;";
+	$dayquery[1]="SELECT slots.slot_id, users.nickname, slots.day_id, users.student_num FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=1 ORDER by slots.slot_id;";
+	$dayquery[2]="SELECT slots.slot_id, users.nickname, slots.day_id, users.student_num FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=2 ORDER by slots.slot_id;";	
+	$dayquery[3]="SELECT slots.slot_id, users.nickname, slots.day_id, users.student_num FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=3 ORDER by slots.slot_id;";
 ?>
 
 
@@ -38,12 +38,14 @@
 		</div>
 			<ul class="nav navbar-nav">
 			 <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">View Students<span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">View Students<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
+          		        <li role="presentation" class="dropdown-header">Add</li>
+		         <li><a href="../addstudents.php">Add Student</a></li>
+		        <li class="divider"></li>
+			   <li role="presentation" class="dropdown-header">View</li>
             <li><a href="day1.php">Day 1</a></li>
-            <li class="divider"></li>
             <li><a href="day2.php">Day 2</a></li>
-            <li class="divider"></li>
             <li><a href="day3.php">Day 3</a></li>
           </ul>
       </li>
@@ -62,6 +64,7 @@
 			<thead>
 				<tr>
 				<th>Queue Number</th>
+				<th>Student Number</th>
 				<th>Nickname</th>
 				</tr>
 			</thead>
@@ -73,6 +76,7 @@
 					{
 						echo "<tr>";
 							echo "<td>$students[0]</td>";
+							echo "<td>$students[3]</td>";
 							echo "<td>$students[1]</td>";
 						echo "</tr>";
 					}

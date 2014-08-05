@@ -57,7 +57,7 @@
 
 		<div class="panel-heading"><h3>Registration</h3></div>
 		<div class="panel-body">
-			<form action="<?php echo $_SERVER['php_self'];?>" method="post">
+			<form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
 
 			<div class="form-group">
 			<label for="nickname">Nickname</label>

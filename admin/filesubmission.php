@@ -25,7 +25,7 @@
 	}
 
 		error_reporting(0);
-
+if($_POST['uploadByFile']=='yes'){
 	$allowedTypes = array(
     'text/csv',
     'text/plain',
@@ -72,19 +72,40 @@ if (in_array($_FILES["file"]["type"], $allowedTypes)) {
 		}
 		else
 		{
-			echo "File Upload success!!!";
+			echo "Adding Student/s Success!!!";
 		}
 }
 else
 {
-	echo "Invalid Input File!!!";
+	echo "Invalid Input File or invalid entry!!!";
+}
+
+}
+else
+{
+	$name = $_POST['name'];
+
+	$student_num = $_POST['studentNum'];
+	$pin = $_POST['pin'];
+	$birthday = $_POST['birthday'];
+
+	echo $name." ".$student_num." ".$pin." ".$birthday;
+	$query = "INSERT into Users (student_num,name,birthday,pin_num) values ($student_num,'$name',to_date('$birthday','YYYY-MM-DD'),md5('$pin'));";
+	$results = pg_query($dbconn,$query);
+	if(!$results)
+	{
+		echo pg_last_error($dbconn);
+	}
+	else
+	{
+		echo "Adding new student success!";
+	}
 }
 ?>
-
 <html>
 	<head></head>
 	<body>
 
-		<a href="index.php"><br>Back</a>
+		<a href="addstudents.php"><br>Back</a>
 	</body>
 </html>
