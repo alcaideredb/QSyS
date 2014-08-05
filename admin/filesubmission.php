@@ -89,7 +89,6 @@ else
 	$pin = $_POST['pin'];
 	$birthday = $_POST['birthday'];
 
-	echo $name." ".$student_num." ".$pin." ".$birthday;
 	$query = "INSERT into Users (student_num,name,birthday,pin_num) values ($student_num,'$name',to_date('$birthday','YYYY-MM-DD'),md5('$pin'));";
 	$results = pg_query($dbconn,$query);
 	if(!$results)

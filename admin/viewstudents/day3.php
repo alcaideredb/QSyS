@@ -66,6 +66,8 @@
 				<th>Queue Number</th>
 				<th>Student Number</th>
 				<th>Nickname</th>
+				<th></th>
+				<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,6 +80,8 @@
 							echo "<td>$students[0]</td>";
 							echo "<td>$students[3]</td>";
 							echo "<td>$students[1]</td>";
+							echo "<td><a href=\"../editstudents.php?id=$students[3]\">Edit</td>";
+							echo "<td><a href=\"../delete.php?id=$students[3]\" onClick=\"return confirm('Delete This account?')\">Delete</a></td>";
 						echo "</tr>";
 					}
 
