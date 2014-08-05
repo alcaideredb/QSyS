@@ -11,8 +11,19 @@
 	$name = $_POST['name'];
 	$bday = $_POST['birthday'];
 	$pin = $_POST['pin'];
+	$origid = $_POST['origid'];
+	$pinstring = (string) $pin;
+	if(strlen($pinstring)!=0){
+	$updQuery = "UPDATE users SET student_num=$id, name = '$name', pin_num=md5('$pin'),".
+	"birthday = to_date('$bday','YYYY-MM-DD'), pin = $pin where student_num = $origid";
+	}
+	else{
+		$updQuery = "UPDATE users SET student_num=$id, name = '$name', pin_num=md5('$pin'),".
+	"birthday = to_date('$bday','YYYY-MM-DD') where student_num = $origid";
+	}
 
-	$updQuery = "UPDATE users "
+	$result = pg_query($dbconn,$updQuery);
+
 	if(!$result){
 		echo "Edit failed!There was a problem in the database!Try again.";
 	}

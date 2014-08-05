@@ -65,7 +65,7 @@
 
 			</form>
 			<div id="fileuploadform">
-				<form action="editsubmit.php" method="post" class="dropzone" id = "uploadDrop" enctype="multipart/form-data">
+				<form action="editsubmit.php" method="post">
 				<div class="form-group" id="inputForms">
 					<label for="studentNum">Student Number: </label>
 						<input type="text" class="form-control" pattern="[0-9]{9}" name="studentNum" id="studentNum" placeholder="Enter 9 digit student number" value = "<?php echo $student['student_num'];?>">
@@ -83,6 +83,7 @@
 
 				</div>
 
+					<input type="hidden" name="origid" value="<?php echo $student_num;?>" />
 
 				  <br>
 				<input type="submit">	
