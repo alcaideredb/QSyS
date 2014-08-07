@@ -99,6 +99,32 @@ CREATE SEQUENCE next_slot_day3
 ALTER TABLE public.next_slot_day3 OWNER TO qadmin;
 
 --
+-- Name: queue; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+CREATE TABLE queue (
+    slot_id integer,
+    student_id integer NOT NULL,
+    day_id integer
+);
+
+
+ALTER TABLE public.queue OWNER TO qadmin;
+
+--
+-- Name: skipped; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+CREATE TABLE skipped (
+    slot_id integer,
+    student_id integer,
+    day_id integer
+);
+
+
+ALTER TABLE public.skipped OWNER TO qadmin;
+
+--
 -- Name: slots; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
 --
 
@@ -161,7 +187,7 @@ ALTER TABLE public.users OWNER TO qadmin;
 --
 
 COPY admin (username, password, account_type, is_processing) FROM stdin;
-jen	ac32f600827910984f686ff3a7419a7c	c	\N
+jen	ac32f600827910984f686ff3a7419a7c	c	3
 \.
 
 
@@ -194,11 +220,26 @@ SELECT pg_catalog.setval('next_slot_day3', 3, true);
 
 
 --
+-- Data for Name: queue; Type: TABLE DATA; Schema: public; Owner: qadmin
+--
+
+COPY queue (slot_id, student_id, day_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: skipped; Type: TABLE DATA; Schema: public; Owner: qadmin
+--
+
+COPY skipped (slot_id, student_id, day_id) FROM stdin;
+\.
+
+
+--
 -- Data for Name: slots; Type: TABLE DATA; Schema: public; Owner: qadmin
 --
 
 COPY slots (slot_id, student_id, day_id) FROM stdin;
-15	201363252	1
 16	201407029	1
 5	201257577	2
 6	201393919	2
@@ -734,6 +775,14 @@ COPY users (id, student_num, name, logged_in, birthday, pin_num, nickname) FROM 
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT oneid UNIQUE (student_num);
+
+
+--
+-- Name: queue_pkey; Type: CONSTRAINT; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY queue
+    ADD CONSTRAINT queue_pkey PRIMARY KEY (student_id);
 
 
 --
