@@ -13,7 +13,10 @@
 			$result = pg_query($dbconn,$selQuery);
 			$row = pg_fetch_row($result);
 
+			if($row[0]!="")
 			echo $row[0];
+			else
+			echo "IDLE";
 	}
 
 ?>

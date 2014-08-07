@@ -14,8 +14,11 @@
 		<script src="../js/dropzoneconfig.js"></script>
 		<link href="../css/dropzone.css" type="text/css" rel="stylesheet" />-->
 		<link href="../css/bootstrap.css" type="text/css" rel="stylesheet">
+		<link href="../css/buttons.css" type="text/css" rel="stylesheet">
+		<link href="../css/jquery.dataTables.css" type="text/css" rel="stylesheet">
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/jquery.dataTables.js"></script>
 		<script>
 			$(document).ready(function(){
 				$.ajax({
@@ -79,11 +82,29 @@
 		<div class="panel-body">
 			<div class="col-md-8">
 					Processing: <span id="currStudent"></span><br>
+					Log: <span id="log"></span><br>
 
 					<button id="pnext">Process Next</button>
 					<button>End Processing</button>
 			</div>
 		</div>
+			<script>
+			if(typeof(EventSource) !== "undefined") {
+			    var source = new EventSource("../sse/sse.php");
+			    source.onmessage = function(event) {
+			        document.getElementById("result").innerHTML = event.data + "<br>";
+			 		$('#livefeed').DataTable({
+			 			  "order": [[ 2, "asc" ]]
+			 		});
+			    };
+			} else {
+			    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+			}
+			</script>
+			<div id="result">
+
+			</div>
+
 		<br>
 	</div>
 		</div>
