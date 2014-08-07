@@ -3,6 +3,7 @@
 	include("../../phpscripts/config.php");
 	if(!isset($_SESSION['logged_admin']))
 	{
+
 		header("location:../login.php");
 	}
 
@@ -63,6 +64,7 @@
 		<table id="studentsday2" >
 			<thead>
 				<tr>
+				<th> </th>
 				<th>Queue Number</th>
 				<th>Student Number</th>
 				<th>Nickname</th>
@@ -78,6 +80,7 @@
 					while($students = pg_fetch_row($result))
 					{
 						echo "<tr>";
+						echo  "<td><input type=\"checkbox\"></td>";
 							echo "<td>$students[0]</td>";
 							echo "<td>$students[3]</td>";
 							echo "<td>$students[1]</td>";

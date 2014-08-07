@@ -32,7 +32,7 @@
 							if(pg_num_rows($result)>0){
 								$admin = pg_fetch_assoc($result);
 								if(md5($password)==$admin['password']){
-									$_SESSION['logged_admin'] = $admin;	
+									$_SESSION['logged_admin'] = $user;	
 									header("location:index.php");
 								}
 								else{

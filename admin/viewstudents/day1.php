@@ -26,7 +26,24 @@
 		<script>
 			$(document).ready(function(){
 				$('#studentsday1').DataTable();
+
+
+				$('#select-all').click(function(event) {   
+				    if(this.checked) {
+				        // Iterate each checkbox
+				        $(':checkbox').each(function() {
+				            this.checked = true;                        
+	        			});
+	   			 	}
+	   			 	else
+	   			 	{
+	   			 		 $(':checkbox').each(function() {
+				            this.checked = false;                        
+	        			});
+	   			 	}
+				});
 			});
+
 		</script>
 	</head>
 	<body>
@@ -63,6 +80,7 @@
 		<table id="studentsday1" >
 			<thead>
 				<tr>
+				<th><input type="checkbox" id="select-all"></th>
 				<th>Queue Number</th>
 				<th>Student Number</th>
 				<th>Nickname</th>
@@ -78,6 +96,7 @@
 					while($students = pg_fetch_row($result))
 					{
 						echo "<tr>";
+						echo "<td><input type=\"checkbox\"></td>";
 							echo "<td>$students[0]</td>";
 							echo "<td>$students[3]</td>";
 							echo "<td>$students[1]</td>";
