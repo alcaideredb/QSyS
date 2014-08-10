@@ -95,10 +95,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Queue<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
           		        <li role="presentation" class="dropdown-header">Load</li>
-		         <li><a href="loadqueue.php">Load to Queue</a></li>
+		         <li><a href="../loadqueue.php">Load to Queue</a></li>
 		        <li class="divider"></li>
 			   <li role="presentation" class="dropdown-header">View</li>
-            <li><a href="../sse/index.php">View Queue</a></li>
+            <li><a href="../../sse/index.php">View Queue</a></li>
             
 			   <li role="presentation" class="dropdown-header">Process</li>
             <li><a href="../process.php">Process Students</a></li>

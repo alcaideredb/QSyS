@@ -1,4 +1,9 @@
+<!--
+	Author: Redan Benedict Alcaide
+
+//-->
 <?php
+
 	session_start();
 	include("../phpscripts/config.php");
 
@@ -18,9 +23,9 @@
 
 
 	<body>
-		<div class="container">
+		<div class="container" style="width:50%;background-color:#87CEEB;height:450px;border-radius:30px">
 			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" id ="login" name="login" method="post" class="form-signin" role="form">
-				<h2 class="form-signin-heading">Test</h2>
+				<h2 class="form-signin-heading">Admin Log In</h2><br><br>
 				Username:<input type="text" name="user" class="form-control" required autofocus>
 				Password:<input type="password" name="password" class="form-control" required>
 				<?php
@@ -54,8 +59,14 @@
 
 					
 			</form>
-
 		</div>
+			<br><br><br>
+			<hr style="border:1.5px solid black">
+			<span style="text-align:center">
+				DCS PRACTICUM CLASS 2013-2014<br>
+				Redan Benedict S. Alcaide
+			</span>
+
 	</body>
 
 

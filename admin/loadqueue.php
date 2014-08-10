@@ -109,6 +109,8 @@
 			   <li role="presentation" class="dropdown-header">View</li>
             <li><a href="../sse/index.php">View Queue</a></li>
          
+         			   <li role="presentation" class="dropdown-header">Process</li>
+            <li><a href="process.php">Process Students</a></li>
           </ul>
       </li>	
 				<li><a href="logout.php">Logout</a></li>

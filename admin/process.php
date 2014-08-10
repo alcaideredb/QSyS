@@ -29,6 +29,20 @@
 							$("#currStudent").html(output);
 						}
 					});
+
+				$("#mknull").click(function(){
+					$.ajax({
+						url:"../ajax/makenull.php",
+						type: 'post',
+						success: function(output)
+						{
+								$("#currStudent").html(output);
+
+						}
+					});
+				});
+
+
 				$("#pnext").click(function(){
 					$.ajax({
 						url:"../ajax/processqueue.php",
@@ -103,7 +117,7 @@
 					Log: <span id="log"></span><br>
 
 					<button id="pnext">Process Next</button>
-					<button>End Processing</button>
+					<button id="mknull">End Processing</button>
 			</div>
 		</div>
 			<script>

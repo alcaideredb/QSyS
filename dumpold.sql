@@ -187,8 +187,7 @@ ALTER TABLE public.users OWNER TO qadmin;
 --
 
 COPY admin (username, password, account_type, is_processing) FROM stdin;
-arabs	ac32f600827910984f686ff3a7419a7c	c	\N
-john	ae074a5692dfb7c26aae5147e52ceb40	a	\N
+jen	ac32f600827910984f686ff3a7419a7c	c	3
 \.
 
 
@@ -203,7 +202,7 @@ SELECT pg_catalog.setval('next_slot', 24, true);
 -- Name: next_slot_day1; Type: SEQUENCE SET; Schema: public; Owner: qadmin
 --
 
-SELECT pg_catalog.setval('next_slot_day1', 17, true);
+SELECT pg_catalog.setval('next_slot_day1', 16, true);
 
 
 --
@@ -241,7 +240,10 @@ COPY skipped (slot_id, student_id, day_id) FROM stdin;
 --
 
 COPY slots (slot_id, student_id, day_id) FROM stdin;
+16	201407029	1
+5	201257577	2
 6	201393919	2
+3	201168915	3
 \.
 
 
@@ -249,7 +251,7 @@ COPY slots (slot_id, student_id, day_id) FROM stdin;
 -- Name: student_id_seq; Type: SEQUENCE SET; Schema: public; Owner: qadmin
 --
 
-SELECT pg_catalog.setval('student_id_seq', 1122, true);
+SELECT pg_catalog.setval('student_id_seq', 1121, true);
 
 
 --
@@ -264,6 +266,7 @@ SELECT pg_catalog.setval('user_id_seq', 1, false);
 --
 
 COPY users (id, student_num, name, logged_in, birthday, pin_num, nickname) FROM stdin;
+626	201300350	Augustine Strickland	f	1999-06-30	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 627	201143371	Denver Oneal	f	2005-10-17	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 628	201151875	Julius Barr	f	2009-12-24	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 629	201369297	Roscoe Ward	f	2010-01-14	230cab36e9b7d8047e9771cd5a1b0e6a	\N
@@ -272,6 +275,7 @@ COPY users (id, student_num, name, logged_in, birthday, pin_num, nickname) FROM 
 632	201129814	Elida Reilly	f	1996-07-30	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 633	201378886	Carlo Ibarra	f	2013-04-04	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 635	201285659	Madelyn Valenzuela	f	2005-07-30	230cab36e9b7d8047e9771cd5a1b0e6a	\N
+636	201364965	Dewitt Barron	f	2007-04-15	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 637	201302953	Ahmad Church	f	2007-01-02	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 638	201342597	Liza Bird	f	1999-12-27	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 639	201229513	Audra Lozano	f	2000-04-11	230cab36e9b7d8047e9771cd5a1b0e6a	\N
@@ -343,7 +347,7 @@ COPY users (id, student_num, name, logged_in, birthday, pin_num, nickname) FROM 
 705	201178089	Fay Sherman	f	2007-02-18	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 706	201117176	Darrell Bell	f	1993-07-05	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 707	201360363	Tabatha Ramirez	f	2003-10-05	230cab36e9b7d8047e9771cd5a1b0e6a	\N
-623	201407029	Julius Mcneil	f	1999-03-08	4297f44b13955235245b2497399d7a93	pogi
+623	201407029	Julius Mcneil	f	1999-03-08	230cab36e9b7d8047e9771cd5a1b0e6a	pogi
 624	201257577	Dianna Goodwin	f	2002-06-12	230cab36e9b7d8047e9771cd5a1b0e6a	asd
 625	201393919	Cordell Peters	f	2001-11-25	230cab36e9b7d8047e9771cd5a1b0e6a	fasdf
 634	201168915	Alissa Davila	f	2004-12-16	230cab36e9b7d8047e9771cd5a1b0e6a	123
@@ -762,8 +766,6 @@ COPY users (id, student_num, name, logged_in, birthday, pin_num, nickname) FROM 
 1120	201225997	Roslyn Goodwin	f	1999-06-13	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 1121	201188197	Christina Mendoza	f	1993-05-01	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 622	201363252	Constance Mckee	f	2003-11-06	230cab36e9b7d8047e9771cd5a1b0e6a	constance
-626	201300350	Augustine Strickland	f	1999-06-30	230cab36e9b7d8047e9771cd5a1b0e6a	august
-1122	200910245	aba	f	4444-02-11	8c94c7adff2188d8231c4e88df1ce18b	\N
 \.
 
 
