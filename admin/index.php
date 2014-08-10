@@ -36,24 +36,32 @@
 		            <li><a href="viewstudents/day1.php">Day 1</a></li>
 		            <li><a href="viewstudents/day2.php">Day 2</a></li>
 		            <li><a href="viewstudents/day3.php">Day 3</a></li>
-		          </ul>
-      			</li>
 
-				<li><a href="logout.php">Logout</a></li>
+		          </ul>
+
+      			</li>
+<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Queue<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          		        <li role="presentation" class="dropdown-header">Load</li>
+		         <li><a href="loadqueue.php">Load to Queue</a></li>
+		        <li class="divider"></li>
+			   <li role="presentation" class="dropdown-header">View</li>
+            <li><a href="../sse/index.php">View Queue</a></li>
+
+			   <li role="presentation" class="dropdown-header">Process</li>
+            <li><a href="process.php">Process Students</a></li>
+         
+          </ul>
+      </li>		
+
+			<li><a href="logout.php">Logout</a></li>
 			</ul>
 			 <p class="navbar-text navbar-right" style="margin-right:1em">Signed in as </p> 
 
 	</nav>
 		<div class="container">
-		<div  class="panel panel-primary">
-
-		<div class="panel-heading"><h3>Upload Student</h3></div>
-		<div class="panel-body">
-			<form action="filesubmission.php" method="post" class="dropzone" id = "uploadDrop" enctype="multipart/form-data">
-			<input type="file" name="file" accept=".csv">
-			<input type="submit">	
-		</form>
-		</div>
+		
 		<br>
 	</div>
 		</div>

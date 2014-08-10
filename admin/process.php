@@ -48,6 +48,13 @@
 				});
 			});
 		</script>
+		<style>
+			.width75
+			{
+				width:75%;
+				margin:auto;
+			}
+		</style>
 	</head>
 	<body>
 
@@ -69,7 +76,18 @@
 		            <li><a href="viewstudents/day3.php">Day 3</a></li>
 		          </ul>
       			</li>
-
+<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Queue<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          		        <li role="presentation" class="dropdown-header">Load</li>
+		         <li><a href="loadqueue.php">Load to Queue</a></li>
+		        <li class="divider"></li>
+			   <li role="presentation" class="dropdown-header">View</li>
+            <li><a href="../sse/index.php">View Queue</a></li>
+         			   <li role="presentation" class="dropdown-header">Process</li>
+            <li><a href="process.php">Process Students</a></li>
+          </ul>
+      </li>	
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 			 <p class="navbar-text navbar-right" style="margin-right:1em">Signed in as </p> 
@@ -81,7 +99,7 @@
 		<div class="panel-heading"><h3>Process Student</h3></div>
 		<div class="panel-body">
 			<div class="col-md-8">
-					Processing: <span id="currStudent"></span><br>
+					<h4>Processing: <span id="currStudent"></span></h4><br>
 					Log: <span id="log"></span><br>
 
 					<button id="pnext">Process Next</button>
@@ -100,8 +118,10 @@
 			} else {
 			    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 			}
+
+
 			</script>
-			<div id="result">
+			<div id="result" class="width75">
 
 			</div>
 

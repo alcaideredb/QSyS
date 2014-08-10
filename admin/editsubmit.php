@@ -15,10 +15,10 @@
 	$pinstring = (string) $pin;
 	if(strlen($pinstring)!=0){
 	$updQuery = "UPDATE users SET student_num=$id, name = '$name', pin_num=md5('$pin'),".
-	"birthday = to_date('$bday','YYYY-MM-DD'), pin = $pin where student_num = $origid";
+	"birthday = to_date('$bday','YYYY-MM-DD') where student_num = $origid";
 	}
 	else{
-		$updQuery = "UPDATE users SET student_num=$id, name = '$name', pin_num=md5('$pin'),".
+		$updQuery = "UPDATE users SET student_num=$id, name = '$name', ".
 	"birthday = to_date('$bday','YYYY-MM-DD') where student_num = $origid";
 	}
 

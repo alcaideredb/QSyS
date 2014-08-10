@@ -51,14 +51,14 @@
 
 				$("#load").click(function(){
 					var redir="loadtoqueue.php?day="+$("#dayEnum").val();
-					var r = confirm("Press a button!");
+					var r = confirm("Are you sure?");
 					var txt;
 					if (r == true) {
  					   window.location.assign(redir);
 					} else {
 					    txt = "You pressed Cancel!";
 					}				
-			});
+				});
 
 			});
 		</script>
@@ -85,7 +85,7 @@
 
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="../index.php">QSyS</a>
+			<a class="navbar-brand" href="index.php">QSyS</a>
 		</div>
 			<ul class="nav navbar-nav">
 			 <li class="dropdown">
@@ -100,6 +100,17 @@
             <li><a href="viewstudents/day3.php">Day 3</a></li>
           </ul>
       </li>
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Queue<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          		        <li role="presentation" class="dropdown-header">Load</li>
+		         <li><a href="loadqueue.php">Load to Queue</a></li>
+		        <li class="divider"></li>
+			   <li role="presentation" class="dropdown-header">View</li>
+            <li><a href="../sse/index.php">View Queue</a></li>
+         
+          </ul>
+      </li>	
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 			 <p class="navbar-text navbar-right" style="margin-right:1em">Signed in as </p> 

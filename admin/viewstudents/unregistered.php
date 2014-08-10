@@ -10,6 +10,7 @@
 	$dayquery[1]="SELECT slots.slot_id, users.nickname, slots.day_id, users.student_num FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=1 ORDER by slots.slot_id;";
 	$dayquery[2]="SELECT slots.slot_id, users.nickname, slots.day_id, users.student_num FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=2 ORDER by slots.slot_id;";	
 	$dayquery[3]="SELECT slots.slot_id, users.nickname, slots.day_id, users.student_num FROM users INNER JOIN slots ON users.student_num = slots.student_id WHERE slots.day_id=3 ORDER by slots.slot_id;";
+	$allusers = "SELECT student_num,name,birthday,nickname FROM USERS";
 ?>
 
 
@@ -88,23 +89,25 @@
             <li><a href="day1.php">Day 1</a></li>
             <li><a href="day2.php">Day 2</a></li>
             <li><a href="day3.php">Day 3</a></li>
-            <li><a href="unregistered.php">All Users</a></li>
+            <li><a href="unregistered.php">Unregistered Students</a></li>
           </ul>
       </li>
- <li class="dropdown">
+ 	<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Queue<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
           		        <li role="presentation" class="dropdown-header">Load</li>
-		         <li><a href="loadqueue.php">Load to Queue</a></li>
+		         <li><a href="../loadqueue.php">Load to Queue</a></li>
 		        <li class="divider"></li>
 			   <li role="presentation" class="dropdown-header">View</li>
-            <li><a href="../sse/index.php">View Queue</a></li>
-            
+            <li><a href="../../sse/index.php">View Queue</a></li>
+         
 			   <li role="presentation" class="dropdown-header">Process</li>
             <li><a href="../process.php">Process Students</a></li>
-         
           </ul>
-      </li>	
+      </li>			
+
+
+
 				<li><a href="../logout.php">Logout</a></li>
 			</ul>
 			 <p class="navbar-text navbar-right" style="margin-right:1em">Signed in as </p> 
@@ -113,46 +116,45 @@
 		<div class="container">
 		<div  class="panel panel-primary">
 
-		<div class="panel-heading"><h3>Day 3</h3></div>
+		<div class="panel-heading"><h3>All Users</h3></div>
 		<div class="panel-body">
-				<form  action="../delete.php" method="post">
+				<form id="deleteform" action="../deletestudents.php" method="post">
 
 		<table id="studentsday1" >
 			<thead>
 				<tr>
 				<th><input type="checkbox" id="select-all"></th>
-				<th>Queue Number</th>
 				<th>Student Number</th>
-				<th>Nickname</th>
+				<th>Name</th>
+				<th>Birthday</th>
 				<th></th>
 
 				</tr>
 			</thead>
 			<tbody>
-						<?php 
+				<?php 
 
-					$result = pg_query($dbconn,$dayquery[1]);
+					$result = pg_query($dbconn,$allusers);
 
 					while($students = pg_fetch_row($result))
 					{
 						echo "<tr>";
-						echo "<td><input type=\"checkbox\" value = \"$students[3]\" name=\"checked[]\"></td>";
+						echo "<td><input type=\"checkbox\" value = \"$students[0]\" name=\"checked[]\"></td>";
 							echo "<td>$students[0]</td>";
-							echo "<td>$students[3]</td>";
 							echo "<td>$students[1]</td>";
-							echo "<td><a class = \"editlink\" href=\"../editstudents.php?id=$students[3]\">Edit</td>";
+							echo "<td>$students[2]</td>";
+							echo "<td><a class = \"editlink\" href=\"../editstudents.php?id=$students[0]\">Edit</td>";
 						echo "</tr>";
 					}
 
 
 				?>
-
 			</tbody>
 		</table>
-				<button type="submit" name="submit">Delete</button>
-
+		
+				<button type="submit" id="submitbutt" name="submit" >Delete</button>
+			</form>
 		</div>
-
 
 		<br>
 	</div>

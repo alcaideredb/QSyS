@@ -26,8 +26,6 @@
 		<script>
 			$(document).ready(function(){
 				$('#studentsday1').DataTable();
-
-
 				$('#select-all').click(function(event) {   
 				    if(this.checked) {
 				        // Iterate each checkbox
@@ -42,9 +40,35 @@
 	        			});
 	   			 	}
 				});
-			});
 
+				$(":checkbox").click(function(){
+ 					var flag=false;
+ 					var c=0;
+ 					$(':checkbox').each(function() {
+				         if(this.checked==true){
+				         		flag=true;
+				         		return false;
+	        				}
+	        		});
+ 						if(flag==true){
+ 							$('.editlink').addClass('disabled');
+							$('.editlink').bind('click', false);
+ 						}
+ 						else{
+ 							$('.editlink').removeClass('disabled');
+ 							$('.editlink').unbind('click', false);		}
+				});
+			
+			});
+		
 		</script>
+		<style>
+
+			.disabled {
+			  color: grey; 
+			}
+
+		</style>
 	</head>
 	<body>
 
@@ -64,8 +88,27 @@
             <li><a href="day1.php">Day 1</a></li>
             <li><a href="day2.php">Day 2</a></li>
             <li><a href="day3.php">Day 3</a></li>
+
+            <li><a href="unregistered.php">All Users</a></li>
           </ul>
       </li>
+ 	<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Queue<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          		        <li role="presentation" class="dropdown-header">Load</li>
+		         <li><a href="../loadqueue.php">Load to Queue</a></li>
+		        <li class="divider"></li>
+			   <li role="presentation" class="dropdown-header">View</li>
+            <li><a href="../../sse/index.php">View Queue</a></li>
+			   <li role="presentation" class="dropdown-header">Process</li>
+            <li><a href="../process.php">Process Students</a></li>
+
+          </ul>
+
+      </li>			
+
+
+
 				<li><a href="../logout.php">Logout</a></li>
 			</ul>
 			 <p class="navbar-text navbar-right" style="margin-right:1em">Signed in as </p> 
@@ -76,6 +119,7 @@
 
 		<div class="panel-heading"><h3>Day 1</h3></div>
 		<div class="panel-body">
+				<form  action="../delete.php" method="post">
 
 		<table id="studentsday1" >
 			<thead>
@@ -85,31 +129,35 @@
 				<th>Student Number</th>
 				<th>Nickname</th>
 				<th></th>
-				<th></th>
 
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
+						<?php 
 
 					$result = pg_query($dbconn,$dayquery[1]);
+
 					while($students = pg_fetch_row($result))
 					{
 						echo "<tr>";
-						echo "<td><input type=\"checkbox\"></td>";
+						echo "<td><input type=\"checkbox\" value = \"$students[3]\" name=\"checked[]\"></td>";
 							echo "<td>$students[0]</td>";
 							echo "<td>$students[3]</td>";
 							echo "<td>$students[1]</td>";
-							echo "<td><a href=\"../editstudents.php?id=$students[3]\">Edit</td>";
-							echo "<td><a href=\"../delete.php?id=$students[3]\" onClick=\"return confirm('Delete This account?')\">Delete</a></td>";
+							echo "<td><a class = \"editlink\" href=\"../editstudents.php?id=$students[3]\">Edit</td>";
 						echo "</tr>";
 					}
 
 
 				?>
+
 			</tbody>
 		</table>
+				<button type="submit" name="submit">Delete</button>
+
 		</div>
+
+
 		<br>
 	</div>
 		</div>

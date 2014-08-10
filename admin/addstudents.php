@@ -42,7 +42,18 @@
 		            <li><a href="viewstudents/day3.php">Day 3</a></li>
 		          </ul>
       			</li>
-
+<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Queue<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          		        <li role="presentation" class="dropdown-header">Load</li>
+		         <li><a href="loadqueue.php">Load to Queue</a></li>
+		        <li class="divider"></li>
+			   <li role="presentation" class="dropdown-header">View</li>
+            <li><a href="../sse/index.php">View Queue</a></li>
+         			   <li role="presentation" class="dropdown-header">Process</li>
+            <li><a href="process.php">Process Students</a></li>
+          </ul>
+      </li>	
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 			 <p class="navbar-text navbar-right" style="margin-right:1em">Signed in as </p> 
@@ -59,20 +70,20 @@
 
 			</form>
 			<div id="fileuploadform">
-				<form action="filesubmission.php" method="post" class="dropzone" id = "uploadDrop" enctype="multipart/form-data">
+				<form action="filesubmission.php" method="post" class="dropzone" id = "uploadDrop" enctype="multipart/form-data" required>
 				<div class="form-group" id="inputForms">
 					<label for="studentNum">Student Number: </label>
 						<input type="text" class="form-control" pattern="[0-9]{9}" name="studentNum" id="studentNum" placeholder="Enter 9 digit student number">
 				<br>
 					<label for="name">Student Name</label>
-						<input type="text" class="form-control" name="name" id="name" placeholder="Enter student name">
+						<input type="text" class="form-control" name="name" id="name" placeholder="Enter student name" required>
 					<br>
 					<label for="birthday">Birthday</label>
-						<input type="date" class="form-control" name="birthday" id="birthday";
+						<input type="date" class="form-control" name="birthday" id="birthday" required>
 										<br>
 					<label for="name">Pin</label>
 
-						<input type="text" class="form-control" pattern="[0-9]{6}" name="pin" id="pin" placeholder="Enter 6 digit pin number">	
+						<input type="text" class="form-control" pattern="[0-9]{6}" name="pin" id="pin" placeholder="Enter 6 digit pin number" required>	
 
 				</div>
 
@@ -84,7 +95,7 @@
 						<input type="file" name="file" accept=".csv">
 				 	   <p class="help-block">Upload students by CSV file</p>
  					 </div>
-				<input type="submit">	
+				<input type="submit"><a href="index.php" style="color:black;"><button type="button">Back</button></a>		
 			</div>
 		</form>
 		</div>

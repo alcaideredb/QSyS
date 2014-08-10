@@ -12,10 +12,11 @@
 		$flag = true;
 		foreach($_POST['checked'] as $value)
 		{
-					
-				$delQuery2 = "delete from slots where student_id=$value";
-				$result2 = pg_query($dbconn,$delQuery2);
-			if(!$result2)
+			$delQuery = "delete from users where student_num=$value";
+			$result = pg_query($dbconn,$delQuery);
+
+		
+			if(!$result)
 			{
 				echo "There was a problem in the database!Try again!<br>";
 				$flag=false;
@@ -23,7 +24,8 @@
 			}
 			else
 			{
-
+				$delQuery2 = "delete from slots where student_id=$value";
+				$result2 = pg_query($dbconn,$delQuery2);
 			}
 
 		}

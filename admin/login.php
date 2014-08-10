@@ -1,6 +1,9 @@
 <?php
 	session_start();
 	include("../phpscripts/config.php");
+
+	if(isset($_SESSION['logged_admin']))
+		header("location:index.php");
 ?>
 
 <html>

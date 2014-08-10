@@ -42,7 +42,9 @@
 						}
 
 						?>
-
+						<style>
+					
+						</style>
 	</head>
 
 
@@ -63,21 +65,15 @@
 			 	<?php echo "<span style=\"font-weight:bold\">$student_num</span>"; ?></p> 
 
 	</nav>
-		<div class="container">
-		<div  class="panel panel-primary">
-
-		<div class="panel-heading"><h3>Your queue number is:</h3></div>
-		<div class="panel-body">
-		<?php
+	
+		<div class="square container">
+			<h3>	<?php
 			
-			echo "<h1 style=\"text-align:center;font-size:10em;font-weight:bold;color:black\">$slot_num</span></h1>";
-			
+			echo "<br><br><br><br><h1 style=\"text-align:center;font-size:10em;font-weight:bold;color:black\">$slot_num</span></h1>";
+			echo "<br><h2 style=\"text-align:center;font-weight:bold;color:black\">Your Queue Number<br></h2>";
 			if($slot_num == "")
-				echo "<br><h2 style=\"text-align:center;color:red\">Not yet assigned!</h2>";
-		?>	
-		</div>
-		<br>
-	</div>
+				echo "<br><br><br><br><h2 style=\"text-align:center;color:red\">Not yet assigned!</h2>";
+		?>	</h3>
 		</div>
 
 	</body>

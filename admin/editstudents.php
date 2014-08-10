@@ -48,6 +48,19 @@
 		            <li><a href="viewstudents/day3.php">Day 3</a></li>
 		          </ul>
       			</li>
+<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Queue<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          		        <li role="presentation" class="dropdown-header">Load</li>
+		         <li><a href="loadqueue.php">Load to Queue</a></li>
+		        <li class="divider"></li>
+			   <li role="presentation" class="dropdown-header">View</li>
+            <li><a href="../sse/index.php">View Queue</a></li>
+            			   <li role="presentation" class="dropdown-header">Process</li>
+            <li><a href="process.php">Process Students</a></li>
+         
+          </ul>
+      </li>	
 
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
@@ -68,13 +81,13 @@
 				<form action="editsubmit.php" method="post">
 				<div class="form-group" id="inputForms">
 					<label for="studentNum">Student Number: </label>
-						<input type="text" class="form-control" pattern="[0-9]{9}" name="studentNum" id="studentNum" placeholder="Enter 9 digit student number" value = "<?php echo $student['student_num'];?>">
+						<input type="text" class="form-control" pattern="[0-9]{9}" name="studentNum" id="studentNum" placeholder="Enter 9 digit student number" value = "<?php echo $student['student_num'];?>" required>
 				<br>
 					<label for="name">Student Name</label>
-						<input type="text" class="form-control" name="name" id="name" placeholder="Enter student name" value = "<?php echo $student['name'];?>">
+						<input type="text" class="form-control" name="name" id="name" placeholder="Enter student name" value = "<?php echo $student['name'];?>" required>
 					<br>
 					<label for="birthday">Birthday</label>
-						<input type="date" class="form-control" name="birthday" id="birthday" value = "<?php echo $student['birthday'];?>">
+						<input type="date" class="form-control" name="birthday" id="birthday" value = "<?php echo $student['birthday'];?>" required>
 										<br>						
 
 					<label for="name">Pin</label>
@@ -86,7 +99,8 @@
 					<input type="hidden" name="origid" value="<?php echo $student_num;?>" />
 
 				  <br>
-				<input type="submit">	
+				<input type="submit"> <a href="index.php" style="color:black;"><button type="button">Back</button></a>	
+
 			</div>
 		</form>
 		</div>
