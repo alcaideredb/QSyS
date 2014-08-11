@@ -59,6 +59,16 @@
 					    txt = "You pressed Cancel!";
 					}				
 				});
+			$("#clear").click(function(){
+					var redir="clear.php";
+					var r = confirm("Are you sure?");
+					var txt;
+					if (r == true) {
+ 					   window.location.assign(redir);
+					} else {
+					    txt = "You pressed Cancel!";
+					}				
+				});
 
 			});
 		</script>
@@ -148,6 +158,8 @@
 		</table>
 		<br>
 		<button id="load" class="nephritis-flat-button" value="">Load this into Queue</button>
+			<button id="clear" class="pomegranate-flat-button" value="">Clear the Queue</button>
+
 		<input type="hidden" name="dayEnum" id="dayEnum" value="1">
 		</div>
 		<br>

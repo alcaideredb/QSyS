@@ -18,7 +18,10 @@ echo "data: " ;
 					echo "<br>";
 				}
 					echo "<span style='background-color:#E3A28F'>$row[0]:";
+					if($row[1]!="")
 					echo "$row[1]</span>&nbsp&nbsp&nbsp";
+					else
+					echo "NONE</span>&nbsp&nbsp&nbsp";
 					$i++;
 	}
 	echo "</h3>";
