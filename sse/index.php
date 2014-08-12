@@ -13,7 +13,7 @@
 <h1 style="text-align:center">Getting server updates</h1>
 <br>
 <h2>Processing</h2>
-<div id="processing"></div>
+<div id="processing" style="float:left"></div>
 	
 <script>
 if(typeof(EventSource) !== "undefined") {
@@ -29,10 +29,7 @@ if(typeof(EventSource) !== "undefined") {
 }
 </script>
 
-<br>
-<h2>Queue</h2>
-<hr>
-<div id="result"></div>
+<div id="result" style="width:50%;float:right"></div>
 
 <script>
 if(typeof(EventSource) !== "undefined") {

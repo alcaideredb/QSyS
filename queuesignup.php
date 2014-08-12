@@ -39,7 +39,7 @@
 
 	<body>
 		<div class="blur"></div>  
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default" role="navigation"
 		<div class="navbar-header">
 			<a class="navbar-brand" href="index.php">QSyS</a>
 		</div>
@@ -51,7 +51,7 @@
 			 	<?php echo "<span style=\"font-weight:bold\">$student_num</span>"; ?></p> 
 
 	</nav>
-
+		<div style="padding:30px"> </div>
 		<div id="container" class="container">
 		<div  class="panel panel-primary">
 
@@ -65,7 +65,7 @@
 		
 			</div>
 
-			<div class="input-group">
+			<div class="input-group" style = "padding-bottom:20px">
 				<label>Day:</label><br>
 				<label class="radio-inline">
   <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"> 1
@@ -79,6 +79,7 @@
 			</div>
 
 			<button id="submit" value="submit" name="submit" class="btn btn-submit">Submit</button>
+			<br>
 			<?php
 				if(isset($_POST['submit']))
 				{

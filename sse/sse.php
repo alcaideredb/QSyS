@@ -8,7 +8,7 @@ header('Cache-Control: no-cache');
 	
 
 echo "retry: 3000\n";
-echo "data: <table id=\"livefeed\">" ;
+echo "data: <table  id=\"livefeed\">" ;
 	echo "<thead>";
 		echo "<th>Slot </th>";
 		echo "<th>ID </th>";

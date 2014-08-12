@@ -23,10 +23,15 @@
 
 
 	<body>
-		<div class="container" style="width:50%;background-color:#87CEEB;height:450px;border-radius:30px">
+		<div class="container" style="width:50%;">
+		<div  class="panel panel-primary">
+
+		<div class="panel-heading"><h2>Sign In</h2></div>
+		<div class="panel-body">
+			<div class="col-md-8">
+				
 			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" id ="login" name="login" method="post" class="form-signin" role="form">
-				<h2 class="form-signin-heading">Admin Log In</h2><br><br>
-				Username:<input type="text" name="user" class="form-control" required autofocus>
+					Username:<input type="text" name="user" class="form-control" required autofocus>
 				Password:<input type="password" name="password" class="form-control" required>
 				<?php
 						error_reporting(0);
@@ -59,13 +64,10 @@
 
 					
 			</form>
+		</div></div></div>
 		</div>
 			<br><br><br>
 			<hr style="border:1.5px solid black">
-			<span style="text-align:center">
-				DCS PRACTICUM CLASS 2013-2014<br>
-				Redan Benedict S. Alcaide
-			</span>
 
 	</body>
 

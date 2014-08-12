@@ -131,7 +131,7 @@
 			<tbody>
 						<?php 
 
-					$result = pg_query($dbconn,$dayquery[1]);
+					$result = pg_query($dbconn,$dayquery[3]);
 
 					while($students = pg_fetch_row($result))
 					{

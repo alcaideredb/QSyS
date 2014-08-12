@@ -17,9 +17,30 @@
 /* navbar */
 .navbar-default {
     background-color: #3BB9FF	;
-    border-bottom: 5px solid #31AEF1;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: 2px 2px 3px 4px rgba(36, 32, 82, 0.44);
     color:white;
 }
+
+.panel-primary > .panel-heading {
+    color: #fff;
+background-color: #3BB9FF;
+    
+
+}
+.panel-primary  {
+box-shadow: 0px 10px 10px 0px rgba(223, 236, 70, 0.17);
+border-color:transparent;
+}
+.panelCustom {
+  box-shadow:0px 10px 10px 0px rgba(0, 171, 252, 0.44)
+}
+
+.hover:hover {
+    color:yellow;
+}
+
 /* title */
 .navbar-default .navbar-brand {
     color: white;
@@ -27,7 +48,12 @@
 
 
 .navbar-default .navbar-nav > .active > a {
-	background-color:orange;
+	background-color:#428bca;
+    color: white;
+}
+
+.navbar-default .navbar-nav > .active > a:hover {
+    background-color:#428bca;
     color: white;
 }
 

@@ -65,7 +65,7 @@
 			 	<?php echo "<span style=\"font-weight:bold\">$student_num</span>"; ?></p> 
 
 	</nav>
-	
+		<div style="padding:30px"> </div>
 		<div class="square container">
 			<h3>	<?php
 			
