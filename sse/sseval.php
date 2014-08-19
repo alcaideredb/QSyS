@@ -3,12 +3,12 @@
 
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
-	$selQuery = "SELECT * FROM QUEUE ORDER BY day_id,slot_id";
+	$selQuery = "SELECT * FROM PROC ORDER BY day_id,slot_id";
 	$result = pg_query($dbconn,$selQuery);
 	
 
 echo "retry: 3000\n";
-echo "data: <table  id=\"livefeed\" >" ;
+echo "data: <table  id=\"livefeedeval\" >" ;
 	echo "<thead>";
 		echo "<th>Slot </th>";
 		echo "<th>ID </th>";

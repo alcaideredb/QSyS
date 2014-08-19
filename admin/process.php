@@ -5,6 +5,13 @@
 	{
 		header("location:login.php");
 	}
+	
+	$chair = $_SESSION['logged_admin'];
+	$queryChair = "SELECT account_type FROM admin where username = '$chair'";
+	$result = pg_query($dbconn,$queryChair);	
+	$row = pg_fetch_row($result);
+	if($row[0]=='c')
+		header("location:eval.php");
 ?>
 
 
@@ -60,6 +67,23 @@
 						}
 					});
 				});
+				$("#skip").click(function(){
+					$.ajax({
+						url:"../ajax/skip.php",
+						type: 'post',
+						success: function(output)
+						{
+						}
+					});
+					$.ajax({
+						url:"../ajax/currproc.php",
+						type: 'post',
+						success: function(output)
+						{
+							$("#currStudent").html(output);
+						}
+					});
+				});
 			});
 		</script>
 		<style>
@@ -88,6 +112,8 @@
 		            <li><a href="viewstudents/day1.php">Day 1</a></li>
 		            <li><a href="viewstudents/day2.php">Day 2</a></li>
 		            <li><a href="viewstudents/day3.php">Day 3</a></li>
+            <li><a href="viewstudents/unregistered.php">All Users</a></li>
+
 		          </ul>
       			</li>
 <li class="dropdown">
@@ -112,29 +138,14 @@
 
 		<div class="panel-heading"><h3>Process Student</h3></div>
 		<div class="panel-body">
-			<div class="col-md-8">
-					<h4>Processing: <span id="currStudent"></span></h4><br>
-					Log: <span id="log"></span><br>
-
-					<button id="pnext">Process Next</button>
-					<button id="mknull">End Processing</button>
-			</div>
+					<h1 style="text-align:center"> <span style="font-size:4em" id="currStudent"></span><br><br>Processing<br><br>
+					<button id="pnext" class="btn btn-primary btn-lg">Process Next</button>
+					<button id="skip" class="btn btn-warning btn-lg">Skip</button>
+					<button id="mknull" class="btn btn-danger btn-lg">End Processing</button></h1>
+						<br><br>
+							&nbsp Skipped: <span id="log"></span><br>
 		</div>
-			<script>
-			if(typeof(EventSource) !== "undefined") {
-			    var source = new EventSource("../sse/sse.php");
-			    source.onmessage = function(event) {
-			        document.getElementById("result").innerHTML = event.data + "<br>";
-			 		$('#livefeed').DataTable({
-			 			  "order": [[ 2, "asc" ]]
-			 		});
-			    };
-			} else {
-			    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
-			}
 
-
-			</script>
 			<div id="result" class="width75">
 
 			</div>
@@ -144,6 +155,21 @@
 		</div>
 
 		
+
+		<div id="result"></div>
+<script>
+if(typeof(EventSource) !== "undefined") {
+    var source = new EventSource("../sse/skipped.php");
+    source.onmessage = function(event) {
+        document.getElementById("result").innerHTML = event.data + "<br>";
+ 		$('#livefeed').DataTable({
+ 		  "order": [[ 1, "asc" ]]
+    		});
+    };
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+}
+</script>
 	</body>
 
 </html>

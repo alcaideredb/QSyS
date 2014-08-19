@@ -5,6 +5,15 @@
 	{
 		header("location:login.php");
 	}
+	
+	$chair = $_SESSION['logged_admin'];
+	$queryChair = "SELECT account_type FROM admin where username = '$chair'";
+	$result = pg_query($dbconn,$queryChair);	
+	$row = pg_fetch_row($result);
+	if($row[0]!='c')
+	{
+			header("location:process.php");
+	}
 ?>
 
 
@@ -14,11 +23,78 @@
 		<script src="../js/dropzoneconfig.js"></script>
 		<link href="../css/dropzone.css" type="text/css" rel="stylesheet" />-->
 		<link href="../css/bootstrap.css" type="text/css" rel="stylesheet">
+		<link href="../css/buttons.css" type="text/css" rel="stylesheet">
+		<link href="../css/jquery.dataTables.css" type="text/css" rel="stylesheet">
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/jquery.dataTables.js"></script>
+		<script>
+			$(document).ready(function(){
+				$.ajax({
+						url:"../ajax/currproc.php",
+						type: 'post',
+						success: function(output)
+						{
+							$("#currStudent").html(output);
+						}
+					});
+
+				$("#mknull").click(function(){
+					$.ajax({
+						url:"../ajax/makenull.php",
+						type: 'post',
+						success: function(output)
+						{
+								$("#currStudent").html(output);
+
+						}
+					});
+				});
+
+
+				$("#enext").click(function(){
+					$.ajax({
+						url:"../ajax/evalqueue.php",
+						type: 'post',
+						success: function(output)
+						{
+						}
+					});
+					$.ajax({
+						url:"../ajax/currproc.php",
+						type: 'post',
+						success: function(output)
+						{
+							$("#currStudent").html(output);
+						}
+					});
+				});
+
+
+				$("#toq").click(function(){
+					$.ajax({
+						url:"../ajax/toq.php",
+						type: 'post',
+						success: function(output)
+						{
+						}
+					});
+					$.ajax({
+						url:"../ajax/currproc.php",
+						type: 'post',
+						success: function(output)
+						{
+							$("#currStudent").html(output);
+						}
+					});
+				});
+			});
+		</script>
 		<style>
-			#inputForms{
-					width:50%;
+			.width75
+			{
+				width:75%;
+				margin:auto;
 			}
 		</style>
 	</head>
@@ -41,7 +117,7 @@
 		            <li><a href="viewstudents/day2.php">Day 2</a></li>
 		            <li><a href="viewstudents/day3.php">Day 3</a></li>
             <li><a href="viewstudents/unregistered.php">All Users</a></li>
-		
+
 		          </ul>
       			</li>
 <li class="dropdown">
@@ -64,43 +140,20 @@
 		<div class="container">
 		<div  class="panel panel-primary">
 
-		<div class="panel-heading"><h3>Upload Student</h3></div>
+		<div class="panel-heading"><h3>Process Student</h3></div>
 		<div class="panel-body">
-
-			<form>
-
-
-			</form>
-			<div id="fileuploadform">
-				<form action="filesubmission.php" method="post" class="dropzone" id = "uploadDrop" enctype="multipart/form-data" required>
-				<div class="form-group" id="inputForms">
-					<label for="studentNum">Student Number: </label>
-						<input type="text" class="form-control" pattern="[0-9]{9}" name="studentNum" id="studentNum" placeholder="Enter 9 digit student number">
-				<br>
-					<label for="name">Student Name</label>
-						<input type="text" class="form-control" name="name" id="name" placeholder="Enter student name" required>
-					<br>
-					<label for="birthday">Birthday</label>
-						<input type="date" class="form-control" name="birthday" id="birthday" required>
-										<br>
-					<label for="name">Pin</label>
-
-						<input type="text" class="form-control" pattern="[0-9]{6}" name="pin" id="pin" placeholder="Enter 6 digit pin number" required>	
-
-				</div>
-
-
-				  <br><br>
-				  <div class="form-group">
-				  		<input type="checkbox" name="uploadByFile" value="yes"> 
-				    <label for="exampleInputFile">Add Students by file</label>
-						<input type="file" name="file" accept=".csv">
-				 	   <p class="help-block">Upload students by CSV file</p>
- 					 </div>
-				<input type="submit"><a href="index.php" style="color:black;"><button type="button">Back</button></a>		
-			</div>
-		</form>
+					<h1 style="text-align:center"> <span style="font-size:4em" id="currStudent"></span><br><br>Evaluating<br><br>
+					<button id="enext" class="btn btn-primary btn-lg">Evaluate Next</button>
+					<button id="toq" class="btn btn-success btn-lg">Evaluate Next and Send To Queue</button>
+					<button id="mknull" class="btn btn-danger btn-lg">End Processing</button></h1>
+						<br><br>
+							&nbsp Log: <span id="log"></span><br>
 		</div>
+
+			<div id="result" class="width75">
+
+			</div>
+
 		<br>
 	</div>
 		</div>

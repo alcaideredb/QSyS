@@ -46,6 +46,8 @@
 		            <li><a href="viewstudents/day1.php">Day 1</a></li>
 		            <li><a href="viewstudents/day2.php">Day 2</a></li>
 		            <li><a href="viewstudents/day3.php">Day 3</a></li>
+            <li><a href="viewstudents/unregistered.php">All Users</a></li>
+		            
 		          </ul>
       			</li>
 <li class="dropdown">

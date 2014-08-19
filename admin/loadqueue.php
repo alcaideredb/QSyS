@@ -3,7 +3,7 @@
 	include("../phpscripts/config.php");
 	if(!isset($_SESSION['logged_admin']))
 	{
-		header("location:../login.php");
+		header("location:login.php");
 	}
 	$chair = $_SESSION['logged_admin'];
 	$queryChair = "SELECT account_type FROM admin where username = '$chair'";
@@ -11,7 +11,7 @@
 	$row = pg_fetch_row($result);
 	if($row[0]!='c')
 	{
-			header("location:../login.php");
+			header("location:login.php");
 	}
 
 ?>
@@ -51,6 +51,17 @@
 
 				$("#load").click(function(){
 					var redir="loadtoqueue.php?day="+$("#dayEnum").val();
+					var r = confirm("Are you sure?");
+					var txt;
+					if (r == true) {
+ 					   window.location.assign(redir);
+					} else {
+					    txt = "You pressed Cancel!";
+					}				
+				});
+
+				$("#proc").click(function(){
+					var redir="loadtoproc.php?day="+$("#dayEnum").val();
 					var r = confirm("Are you sure?");
 					var txt;
 					if (r == true) {
@@ -108,6 +119,8 @@
             <li><a href="viewstudents/day1.php">Day 1</a></li>
             <li><a href="viewstudents/day2.php">Day 2</a></li>
             <li><a href="viewstudents/day3.php">Day 3</a></li>
+            <li><a href="viewstudents/unregistered.php">All Users</a></li>
+      
           </ul>
       </li>
       <li class="dropdown">
@@ -157,7 +170,8 @@
 			
 		</table>
 		<br>
-		<button id="load" class="nephritis-flat-button" value="">Load this into Queue</button>
+		<button id="load" class="nephritis-flat-button" value="">Load this into Processing Queue</button>
+		<button id="proc" class="peter-river-flat-button" value="">Load this into Evaluation Queue</button>
 			<button id="clear" class="pomegranate-flat-button" value="">Clear the Queue</button>
 
 		<input type="hidden" name="dayEnum" id="dayEnum" value="1">

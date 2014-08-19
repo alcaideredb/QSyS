@@ -21,10 +21,9 @@
 
 		<div class="panel-heading"><h2>Sign In</h2></div>
 		<div class="panel-body">
-			<div class="col-md-8">
 			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" id ="login" name="login" method="post" class="form-signin" role="form">
-				Username:<input type="text" name="user" class="form-control" required autofocus>
-				Password:<input type="password" name="password" class="form-control" required>
+				Student ID:<input type="text" name="user" class="form-control" required autofocus  placeholder="9-digit student number">
+				Pin Number:<input type="password" name="password" class="form-control" required placeholder="6-digit pin number">
 				<?php
 						error_reporting(0);
 						if(isset($_POST['submit']))
@@ -57,13 +56,8 @@
 					
 			</form>
 		</div></div></div>
-		</div>
+	
 			<br><br><br>
-			<hr style="border:1.5px solid black">
-			<span style="text-align:center">
-				DCS PRACTICUM CLASS 2013-2014<br>
-				Redan Benedict S. Alcaide
-			</span>
 	</body>
 
 

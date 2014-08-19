@@ -24,11 +24,10 @@
 
 	<body>
 		<div class="container" style="width:50%;">
-		<div  class="panel panel-primary">
+		<div  class="panel panel-primary panelCustom">
 
 		<div class="panel-heading"><h2>Sign In</h2></div>
 		<div class="panel-body">
-			<div class="col-md-8">
 				
 			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" id ="login" name="login" method="post" class="form-signin" role="form">
 					Username:<input type="text" name="user" class="form-control" required autofocus>
@@ -65,9 +64,8 @@
 					
 			</form>
 		</div></div></div>
-		</div>
+
 			<br><br><br>
-			<hr style="border:1.5px solid black">
 
 	</body>
 
