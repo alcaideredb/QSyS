@@ -99,6 +99,32 @@ CREATE SEQUENCE next_slot_day3
 ALTER TABLE public.next_slot_day3 OWNER TO qadmin;
 
 --
+-- Name: proc; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+CREATE TABLE proc (
+    slot_id integer,
+    student_id integer NOT NULL,
+    day_id integer
+);
+
+
+ALTER TABLE public.proc OWNER TO qadmin;
+
+--
+-- Name: processed; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+CREATE TABLE processed (
+    admin text,
+    slot_id integer,
+    status boolean
+);
+
+
+ALTER TABLE public.processed OWNER TO qadmin;
+
+--
 -- Name: queue; Type: TABLE; Schema: public; Owner: qadmin; Tablespace: 
 --
 
@@ -187,7 +213,9 @@ ALTER TABLE public.users OWNER TO qadmin;
 --
 
 COPY admin (username, password, account_type, is_processing) FROM stdin;
+jen	ac32f600827910984f686ff3a7419a7c	a	\N
 john	ae074a5692dfb7c26aae5147e52ceb40	a	\N
+ben	ac32f600827910984f686ff3a7419a7c	a	\N
 arabs	ac32f600827910984f686ff3a7419a7c	c	\N
 \.
 
@@ -203,7 +231,7 @@ SELECT pg_catalog.setval('next_slot', 24, true);
 -- Name: next_slot_day1; Type: SEQUENCE SET; Schema: public; Owner: qadmin
 --
 
-SELECT pg_catalog.setval('next_slot_day1', 17, true);
+SELECT pg_catalog.setval('next_slot_day1', 18, true);
 
 
 --
@@ -218,6 +246,26 @@ SELECT pg_catalog.setval('next_slot_day2', 7, true);
 --
 
 SELECT pg_catalog.setval('next_slot_day3', 3, true);
+
+
+--
+-- Data for Name: proc; Type: TABLE DATA; Schema: public; Owner: qadmin
+--
+
+COPY proc (slot_id, student_id, day_id) FROM stdin;
+6	201393919	2
+7	201369297	2
+\.
+
+
+--
+-- Data for Name: processed; Type: TABLE DATA; Schema: public; Owner: qadmin
+--
+
+COPY processed (admin, slot_id, status) FROM stdin;
+jen	6	t
+jen	7	f
+\.
 
 
 --
@@ -243,6 +291,7 @@ COPY skipped (slot_id, student_id, day_id) FROM stdin;
 COPY slots (slot_id, student_id, day_id) FROM stdin;
 6	201393919	2
 7	201369297	2
+18	201143371	1
 \.
 
 
@@ -265,7 +314,6 @@ SELECT pg_catalog.setval('user_id_seq', 1, false);
 --
 
 COPY users (id, student_num, name, logged_in, birthday, pin_num, nickname) FROM stdin;
-627	201143371	Denver Oneal	f	2005-10-17	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 628	201151875	Julius Barr	f	2009-12-24	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 630	201123579	Tana Church	f	2011-05-11	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 631	201290756	Orlando Osborne	f	2006-07-10	230cab36e9b7d8047e9771cd5a1b0e6a	\N
@@ -348,6 +396,7 @@ COPY users (id, student_num, name, logged_in, birthday, pin_num, nickname) FROM 
 625	201393919	Cordell Peters	f	2001-11-25	230cab36e9b7d8047e9771cd5a1b0e6a	fasdf
 634	201168915	Alissa Davila	f	2004-12-16	230cab36e9b7d8047e9771cd5a1b0e6a	123
 629	201369297	Roscoe Ward	f	2010-01-14	230cab36e9b7d8047e9771cd5a1b0e6a	arabs
+627	201143371	Denver Oneal	f	2005-10-17	230cab36e9b7d8047e9771cd5a1b0e6a	kiminoy
 708	201309186	Jerri Warren	f	2000-07-23	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 709	201286413	Eula Mccray	f	2000-04-29	230cab36e9b7d8047e9771cd5a1b0e6a	\N
 710	201140439	Ross Hodges	f	2010-12-11	230cab36e9b7d8047e9771cd5a1b0e6a	\N
@@ -774,6 +823,14 @@ COPY users (id, student_num, name, logged_in, birthday, pin_num, nickname) FROM 
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT oneid UNIQUE (student_num);
+
+
+--
+-- Name: proc_pkey; Type: CONSTRAINT; Schema: public; Owner: qadmin; Tablespace: 
+--
+
+ALTER TABLE ONLY proc
+    ADD CONSTRAINT proc_pkey PRIMARY KEY (student_id);
 
 
 --
